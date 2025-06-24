@@ -15,6 +15,11 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            min-height: 100vh; /* Ensure body takes full viewport height for fixed background */
+            display: flex; /* Use flexbox to center content vertically if needed */
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
         }
         /* Overlay to control background transparency */
         body::before {
@@ -29,66 +34,113 @@
         }
         .container {
             max-width: 1000px;
+            width: 95%; /* Use percentage for width to make it flexible */
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for content readability */
             padding: 20px;
             border-radius: 10px;
+            box-sizing: border-box; /* Include padding in the element's total width/height */
         }
         h1 {
             color: #6441A5; /* Twitch purple */
+            font-size: 2.5em; /* Use em for font size for better scaling */
+            margin-bottom: 20px; /* Add some space below the heading */
         }
+
+        /* Responsive Twitch Player */
         .twitch-player {
+            position: relative; /* Needed for absolute positioning of iframe */
+            width: 100%; /* Take full width of its parent (.container) */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (height / width = 9 / 16 = 0.5625) */
+            height: 0; /* Hide initial height */
+            overflow: hidden; /* Hide anything outside this box */
             margin: 20px 0;
         }
+
+        .twitch-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Remove default iframe border */
+        }
+
         .social-links {
             display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line on small screens */
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px; /* Slightly reduced gap for smaller screens */
+            margin-top: 30px; /* Increased margin for better separation */
         }
         .social-links a {
             text-decoration: none;
             color: #333;
-            font-size: 18px;
+            font-size: 1em; /* Use em for font size */
             display: flex;
             align-items: center;
             gap: 8px;
+            padding: 8px 12px; /* Add padding to make link areas larger and easier to tap */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly lighter background for visibility */
+            transition: background-color 0.3s ease; /* Smooth hover/tap effect */
+        }
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.9);
         }
         .social-links img {
-            width: 24px;
-            height: 24px;
+            width: 28px; /* Slightly increased size for better visibility/tap target */
+            height: 28px;
+            vertical-align: middle; /* Align image with text */
+        }
+
+        /* Media Queries for fine-tuning on smaller screens */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 10px; /* Reduce overall padding on very small screens */
+            }
+            .container {
+                padding: 15px; /* Reduce inner padding */
+                width: 98%; /* Take even more width on very small screens */
+            }
+            h1 {
+                font-size: 2em; /* Smaller heading on smaller phones */
+            }
+            .social-links {
+                flex-direction: column; /* Stack social links vertically on very small screens */
+                gap: 10px; /* Reduce gap when stacked */
+            }
+            .social-links a {
+                width: 80%; /* Make links take up more width when stacked */
+                margin: 0 auto; /* Center them */
+                justify-content: center; /* Center content within the link */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>TheHumblePeasant</h1>
-<div class="twitch-player">
+        <div class="twitch-player">
             <iframe
                 src="https://embed.twitch.tv/?channel=willneff&parent=thehumblepeasant.stream&autoplay=true&muted=false"
-                height="600"
-                width="1000"
                 allowfullscreen="true">
             </iframe>
         </div>
-        <!-- Social Media Links -->
         <div class="social-links">
-            <a href="https://twitter.com/ahumblepeasant" target="_blank">
+            <a href="https://twitter.com/ahumblepeasant" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter Logo">
                 Twitter
             </a>
-            <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank">
+            <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord Logo">
                 Discord
             </a>
-            <a href="https://www.youtube.com/YOUR_YOUTUBE_CHANNEL" target="_blank">
+            <a href="https://youtube.com/0" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo">
                 YouTube
             </a>
-             <a href="https://www.youtube.com/YOUR_YOUTUBE_CHANNEL" target="_blank">
-                <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo">
-                YouTube
-        </div>
+            </div>
     </div>
 </body>
 </html>
