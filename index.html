@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheHumblePeasant</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for background and overlay - not easily done with Tailwind utilities */
@@ -31,19 +30,23 @@
         iframe {
             border-radius: 8px;
         }
+
+        /* --- NEW CSS FOR SUBTLE PLAYER SHRINK --- */
+        .twitch-player-container {
+            width: 98%; /* Adjust this value: 99% for almost no change, 97% for a bit more */
+            margin-left: auto; /* Centers the div */
+            margin-right: auto; /* Centers the div */
+        }
+        /* --- END NEW CSS --- */
     </style>
 </head>
 <body class="flex flex-col items-center min-h-screen text-gray-800">
-    <!-- Main container for all content, adjusted margin-top to mt-6 for less space at the top -->
     <div class="container max-w-4xl w-11/12 mx-auto p-6 rounded-xl shadow-lg bg-gray-300/80 flex flex-col items-center mt-6 mb-10">
-        <!-- Title "TheHumblePeasant" -->
         <h1 class="text-purple-700 text-5xl mb-3 tracking-wide drop-shadow-sm">
             TheHumblePeasant
         </h1>
 
-        <!-- Container for Twitch Video Player and Chat, stacked vertically -->
-        <div class=twitch-player-container w-11/12 mx-auto flex flex-col gap-4">
-            <!-- Twitch Video Player Embed -->
+        <div class="twitch-player-container flex flex-col gap-4">
             <div class="twitch-video-embed relative w-full pb-[60.25%] h-3 overflow-hidden rounded-lg shadow-md">
                 <iframe
                     src="https://player.twitch.tv/?channel=hasanabi&parent=thehumblepeasant.stream&autoplay=true&muted=false"
@@ -52,7 +55,6 @@
                 ></iframe>
             </div>
 
-            <!-- Twitch Chat Embed (Below the player) -->
             <div class="twitch-chat-embed w-full h-80 rounded-lg shadow-md overflow-hidden">
                 <iframe
                     src="https://www.twitch.tv/embed/hasanabi/chat?parent=thehumblepeasant.stream"
@@ -62,24 +64,22 @@
             </div>
         </div>
 
-        <!-- Social Links Section -->
         <div class="social-links flex flex-wrap justify-center gap-5 mt-10">
-            <!-- Changed to a more visible transparent grey for buttons: bg-gray-200/85 -->
             <a href="https://twitter.com/ahumblepeasant" target="_blank" rel="noopener noreferrer"
                class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                       hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
                 <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter Logo" class="w-8 h-8 align-middle">
                 Twitter
             </a>
             <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank" rel="noopener noreferrer"
                class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                       hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
                 <img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord Logo" class="w-8 h-8 align-middle">
                 Discord
             </a>
             <a href="https://youtube.com/0" target="_blank" rel="noopener noreferrer"
                class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                       hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
                 <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo" class="w-8 h-8 align-middle">
                 YouTube
             </a>
@@ -87,6 +87,3 @@
     </div>
 </body>
 </html>
-
-
-
