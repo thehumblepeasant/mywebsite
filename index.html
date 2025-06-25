@@ -4,24 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheHumblePeasant</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom styles for background and overlay - not easily done with Tailwind utilities */
         body {
-            font-family: 'Inter', Arial, sans-serif; /* Using Inter font for modern look */
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            background-image: url('https://thehumblepeasant.stream/ahumblepeasant_offline.png'); /* Placeholder for your image */
+            /* Using Inter font as requested */
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://thehumblepeasant.stream/ahumblepeasant_offline.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #333; /* Default text color */
+            background-attachment: fixed; /* Ensures background image stays fixed during scroll */
         }
-        /* Overlay to control background transparency */
+        /* Overlay to control background transparency and ensure readability */
         body::before {
             content: '';
             position: fixed;
@@ -30,202 +25,68 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.3); /* Adjust opacity here */
-            z-index: -1;
+            z-index: -1; /* Ensures the overlay is behind content */
         }
-        .container {
-            max-width: 1000px;
-            width: 95%; /* Use percentage for width to make it flexible */
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content readability */
-            padding: 25px; /* Slightly increased padding */
-            border-radius: 12px; /* More rounded corners */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            box-sizing: border-box;
-            display: flex; /* Use flexbox for vertical stacking */
-            flex-direction: column;
-            align-items: center;
-        }
-        h1 {
-            color: #6441A5; /* Twitch purple */
-            font-size: 2.8em; /* Slightly larger heading */
-            margin-bottom: 25px;
-            letter-spacing: 1px; /* Add some letter spacing */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Soft text shadow */
-        }
-
-        /* Responsive Twitch Player Container */
-        .twitch-player-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column; /* Stack player and chat vertically */
-            gap: 20px; /* Space between player and chat */
-        }
-
-        .twitch-video-embed {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px; /* Rounded corners for the player */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .twitch-video-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 8px; /* Ensure iframe also has rounded corners */
-        }
-
-        /* Responsive Twitch Chat Embed */
-        .twitch-chat-embed {
-            width: 100%;
-            height: 350px; /* Fixed height for the chat, adjust as needed */
-            border-radius: 8px; /* Rounded corners for the chat */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Hide scrollbars if content overflows */
-        }
-
-        .twitch-chat-embed iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 8px; /* Ensure iframe also has rounded corners */
-        }
-
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px; /* Increased gap for better spacing */
-            margin-top: 40px; /* More space above social links */
-        }
-        .social-links a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1.1em; /* Slightly larger font size */
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px; /* Increased padding */
-            border-radius: 25px; /* Pill shape for buttons */
-            background-color: rgba(255, 255, 255, 0.85); /* Lighter background */
-            transition: all 0.3s ease; /* Smooth transition for all properties */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            border: 1px solid rgba(0, 0, 0, 0.05); /* Light border */
-        }
-        .social-links a:hover {
-            background-color: rgba(255, 255, 255, 1);
-            transform: translateY(-3px); /* Lift effect on hover */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
-            color: #6441A5; /* Twitch purple on hover */
-        }
-        .social-links img {
-            width: 32px; /* Larger icons */
-            height: 32px;
-            vertical-align: middle;
-        }
-
-        /* Media Queries for fine-tuning on smaller screens */
-        @media screen and (max-width: 768px) {
-            .container {
-                padding: 20px;
-                width: 98%;
-            }
-            h1 {
-                font-size: 2.2em;
-                margin-bottom: 20px;
-            }
-            .twitch-chat-embed {
-                height: 300px; /* Reduce chat height on tablets/mobiles */
-            }
-            .social-links {
-                gap: 15px;
-                margin-top: 30px;
-            }
-            .social-links a {
-                font-size: 1em;
-                padding: 8px 15px;
-                border-radius: 20px;
-            }
-            .social-links img {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
-            }
-            .twitch-chat-embed {
-                height: 250px; /* Further reduce chat height on smaller phones */
-            }
-            .social-links {
-                flex-direction: column; /* Stack social links vertically on small phones */
-                gap: 10px;
-                margin-top: 20px;
-            }
-            .social-links a {
-                width: 90%; /* Make links take up more width when stacked */
-                margin: 0 auto; /* Center them */
-                justify-content: center; /* Center content within the link */
-                padding: 10px;
-                border-radius: 15px;
-            }
-            .social-links img {
-                width: 24px;
-                height: 24px;
-            }
+        /* Ensure iframe has rounded corners across different browsers */
+        iframe {
+            border-radius: 8px;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>TheHumblePeasant</h1>
-        <div class="twitch-player-container">
+<body class="flex flex-col items-center min-h-screen text-gray-800">
+    <!-- Main container for all content, adjusted margin-top to mt-6 for less space at the top -->
+    <div class="container max-w-4xl w-11/12 mx-auto p-6 rounded-xl shadow-lg bg-gray-300/80 flex flex-col items-center mt-6 mb-10">
+        <!-- Title "TheHumblePeasant" -->
+        <h1 class="text-purple-700 text-5xl mb-6 tracking-wide drop-shadow-sm">
+            TheHumblePeasant
+        </h1>
+
+        <!-- Container for Twitch Video Player and Chat, stacked vertically -->
+        <div class="twitch-player-container w-full flex flex-col gap-5">
             <!-- Twitch Video Player Embed -->
-            <div class="twitch-video-embed">
+            <div class="twitch-video-embed relative w-full pb-[56.25%] h-3 overflow-hidden rounded-lg shadow-md">
                 <iframe
                     src="https://player.twitch.tv/?channel=hasanabi&parent=thehumblepeasant.stream&autoplay=true&muted=false"
-                    allowfullscreen="true">
-                </iframe>
+                    allowfullscreen="true"
+                    class="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
+                ></iframe>
             </div>
 
             <!-- Twitch Chat Embed (Below the player) -->
-            <div class="twitch-chat-embed">
+            <div class="twitch-chat-embed w-full h-96 rounded-lg shadow-md overflow-hidden">
                 <iframe
                     src="https://www.twitch.tv/embed/hasanabi/chat?parent=thehumblepeasant.stream"
-                    allowfullscreen="true">
-                </iframe>
+                    allowfullscreen="true"
+                    class="w-full h-full border-0 rounded-lg"
+                ></iframe>
             </div>
         </div>
 
-        <div class="social-links">
-            <a href="https://twitter.com/ahumblepeasant" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter Logo">
+        <!-- Social Links Section -->
+        <div class="social-links flex flex-wrap justify-center gap-5 mt-10">
+            <!-- Changed to a more visible transparent grey for buttons: bg-gray-200/85 -->
+            <a href="https://twitter.com/ahumblepeasant" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
+                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter Logo" class="w-8 h-8 align-middle">
                 Twitter
             </a>
-            <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord Logo">
+            <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
+                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                <img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord Logo" class="w-8 h-8 align-middle">
                 Discord
             </a>
-            <a href="https://youtube.com/0" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo">
+            <a href="https://youtube.com/0" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-800 text-lg flex items-center gap-3 px-5 py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
+                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
+                <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo" class="w-8 h-8 align-middle">
                 YouTube
             </a>
         </div>
     </div>
 </body>
 </html>
+
+
+
