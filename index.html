@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheHumblePeasant</title>
+    <title>TheHumblePeasant.stream</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=New+Rocker&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for background and overlay - not easily done with Tailwind utilities */
         body {
-            /* Using Inter font as requested - You might want to link the font from Google Fonts for better cross-browser consistency */
-            /* Add this to your <head> for Inter font: <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"> */
+            /* Using Inter font as requested */
             font-family: 'Inter', sans-serif;
             background-image: url('https://thehumblepeasant.stream/ahumblepeasant_offline.png');
             background-size: cover;
@@ -24,26 +26,36 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.3); /* Adjust opacity here */
+            background: rgba(0,0,0, 0.18); /* Adjust opacity here */
             z-index: -1; /* Ensures the overlay is behind content */
         }
         /* Ensure iframe has rounded corners across different browsers - already good */
         iframe {
             border-radius: 8px;
         }
+
+        /* Example of how to use New Rocker */
+        .new-rocker-font {
+            font-family: 'New Rocker', cursive; /* It's good practice to add a generic fallback */
+        }
+
+        /* If you want TheHumblePeasant title to be New Rocker */
+        .text-4xl.sm\:text-5xl.mb-4.sm\:mb-6.tracking-wide.drop-shadow-sm.text-center {
+            font-family: 'New Rocker', cursive;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center min-h-screen text-gray-800">
-    <div class="container w-11/12 mx-auto p-4 md:p-6 rounded-xl shadow-lg bg-gray-300/80 flex flex-col items-center mt-6 mb-10 md:max-w-4xl lg:max-w-6xl">
-        <h1 class="text-purple-700 text-4xl sm:text-5xl mb-4 sm:mb-6 tracking-wide drop-shadow-sm text-center">
-            TheHumblePeasant
-        </h1>
-
+    <div class="container w-11/12 mx-auto p-4 md:p-6 rounded-xl shadow-lg bg-gray-400/25 flex flex-col items-center mt-6 mb-10 md:max-w-4xl lg:max-w-6xl">
+  <h1 class="text-gray-200 text-4xl sm:text-5xl mb-4 sm:mb-6 tracking-wide drop-shadow-sm text-center new-rocker-font
+           border-2 border-solid border-gray-900 px-5 py-3 rounded-lg
+           bg-purple-700/70"> TheHumblePeasant
+</h1>
         <div class="twitch-player-and-chat-container w-full flex flex-col md:flex-row gap-5 md:gap-6">
 
             <div class="twitch-video-embed relative w-full md:w-2/3 pb-[56.25%] h-0 overflow-hidden rounded-lg shadow-md flex-shrink-0">
                 <iframe
-                    src="https://player.twitch.tv/?channel=hasanabi&parent=thehumblepeasant.stream&autoplay=true&muted=false"
+                    src="https://player.twitch.tv/?channel=thehumblepeasant&parent=thehumblepeasant.stream&autoplay=true&muted=false"
                     allowfullscreen="true"
                     class="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
                 ></iframe>
@@ -51,7 +63,7 @@
 
             <div class="twitch-chat-embed w-full h-80 md:h-auto rounded-lg shadow-md overflow-hidden md:w-1/3">
                 <iframe
-                    src="https://www.twitch.tv/embed/hasanabi/chat?parent=thehumblepeasant.stream&theme=dark"
+                    src="https://www.twitch.tv/embed/thehumblepeasant/chat?parent=thehumblepeasant.stream&theme=dark"
                     allowfullscreen="true"
                     class="w-full h-full border-0 rounded-lg"
                 ></iframe>
@@ -60,22 +72,36 @@
 
         <div class="social-links flex flex-wrap justify-center gap-4 sm:gap-5 mt-8 sm:mt-10">
             <a href="https://twitter.com/ahumblepeasant" target="_blank" rel="noopener noreferrer"
-               class="no-underline text-gray-800 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
-                <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-blue-800/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/twitter.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
                 Twitter
             </a>
-            <a href="https://discord.gg/YOUR_DISCORD_INVITE" target="_blank" rel="noopener noreferrer"
-               class="no-underline text-gray-800 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
-                <img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
-                Discord
-            </a>
-            <a href="https://youtube.com/0" target="_blank" rel="noopener noreferrer"
-               class="no-underline text-gray-800 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-gray-200/85 transition-all duration-300 ease-in-out shadow-md border border-gray-100
-                      hover:bg-gray-300 hover:-translate-y-1 hover:shadow-lg hover:text-purple-700">
-                <img src="https://img.icons8.com/color/48/000000/youtube.png" alt="YouTube Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
-                YouTube
+            <a href="https://www.tiktok.com/@ahumblepeasant" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-gray-600/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/tiktok.png" alt="YouTube Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+                TikTok
+                <a href="https://streamelements.com/thehumblepeasant/tip" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-purple-900/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/donations.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+                Donations
+              <a href="https://cash.app/$thehumblepeasant" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-green-500/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/donations.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+                CashApp
+                <a href="mailto:thehumblepeasant@protonmail.com" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-red-700/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/emails.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+                Contact
+                <a href="https://www.youtube.com/watch?v=TiBM4RqkK_Q&ab_channel=DJGrossman" target="_blank" rel="noopener noreferrer"
+               class="no-underline text-gray-200 text-base sm:text-lg flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-5 sm:py-3 rounded-full bg-blue-400/85 transition-all duration-300 ease-in-out shadow-md border border-gray-900
+                     hover:bg-gray-900 hover:-translate-y-1 hover:shadow-lg hover:text-white-900 new-rocker-font">
+                <img src="https://thehumblepeasant.stream/onlyfans.png" alt="Twitter Logo" class="w-7 h-7 sm:w-8 sm:h-8 align-middle">
+                OnlyFans
             </a>
         </div>
     </div>
